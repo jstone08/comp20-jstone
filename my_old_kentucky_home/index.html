@@ -38,13 +38,11 @@
 
 		var callAgain = true;
 
-
 		if (vid.currentTime < 6) {
 	 		document.getElementById("lyrics").innerHTML = "";
 		}
 
 		if (vid.currentTime >= 6) {
-
 			document.getElementById("lyrics").innerHTML = "";
 			document.getElementById("lyrics").appendChild(sun);
 	 		document.getElementById("lyrics").innerHTML += "The sun shines bright in My Old Kentucky Home," ;
@@ -90,7 +88,6 @@
 			document.getElementById("lyrics").appendChild(kentucky);
 			document.getElementById("lyrics").innerHTML += "For My Old Kentucky Home, far away";
 		}
-
 		if (vid.currentTime >= 93) {
 			document.getElementById("lyrics").innerHTML = "";
 			callAgain = false;
