@@ -173,8 +173,8 @@ function renderMap() {
 		icon: 'T_logo.png'
 	});
 
-		//polyline paths
-    alewifeToJFK = [
+	//polyline paths
+    line1 = [
         {lat:   42.395428,  lng:   -71.142483},
         {lat:   42.39674,  	lng:   -71.121815},
         {lat:   42.3884,  	lng:   -71.11914899999999},
@@ -191,7 +191,7 @@ function renderMap() {
         {lat:   42.320685,  lng:   -71.052391}
     ];
 
-    JFKToAshmont = [
+    line2 = [
         {lat:   42.320685,  lng:   -71.052391},
         {lat:   42.31129,  	lng:   -71.053331},
         {lat:   42.300093,  lng:   -71.061667},
@@ -199,7 +199,7 @@ function renderMap() {
         {lat:   42.284652,  lng:   -71.06448899999999}
     ];
 
-    JFKToBraintree = [
+    line3 = [
         {lat:   42.320685,  lng:         -71.052391},
         {lat:   42.275275,  lng:         -71.029583},
         {lat:  42.2665139,  lng:        -71.0203369},
@@ -210,24 +210,24 @@ function renderMap() {
         
 
     //printing polylines
-    alewifeToJFKPath 	= new google.maps.Polyline({
-        path: 			alewifeToJFK, 
+    path1 	= new google.maps.Polyline({
+        path: 			line1, 
         geodesic: 		true,
         strokeColor: 	'#FF0000',
         strokeOpacity: 	.50,
         strokeWeight: 	10
         });
 
-    JFKToAshmontPath 	= new google.maps.Polyline({
-        path: 			JFKToAshmont, 
+    path2 	= new google.maps.Polyline({
+        path: 			line2, 
         geodesic: 		true,
         strokeColor: 	'#FF0000',
         strokeOpacity: 	.50,
         strokeWeight: 	10
     });
 
-    JFKToBraintreePath 	= new google.maps.Polyline({
-      	path: 			JFKToBraintree, 
+    path3 	= new google.maps.Polyline({
+      	path: 			line3, 
       	geodesic: 		true,
       	strokeColor: 	'#FF0000',
        	strokeOpacity: 	.50,
@@ -235,9 +235,9 @@ function renderMap() {
     });
 
     //setting lines
-    alewifeToJFKPath.setMap(map);
-    JFKToAshmontPath.setMap(map);
-    JFKToBraintreePath.setMap(map);
+    path1.setMap(map);
+    path2.setMap(map);
+    path3.setMap(map);
 
 	markerSouthStation.setMap(map);
 	map.panTo(southStation);
