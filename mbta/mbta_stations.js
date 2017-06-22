@@ -3,6 +3,7 @@
  *
  * Author:  Jordan Stone 
  * Date:    6/13/17
+ * Edited:  6/20/17
  *
  */
 var southLat = 42.352271;
@@ -20,9 +21,6 @@ function init() {
     makeMapLocations();
 
     navigator.geolocation.getCurrentPosition(showMeMarker);
-
-
-    //TODO: break into functions
 
     renderMap();
 
@@ -70,7 +68,6 @@ function makeMapLocations() {
     centralSquare   = new google.maps.LatLng(42.365486, -71.103802);
     braintree       = new google.maps.LatLng(42.2078543, -71.0011385);
 
-    //polyline paths
     line1 = [alewife, davis, porterSquare, harvardSquare, centralSquare,
             kendallMIT, charlesMGH, parkStreet, downtownCrossing, southStation, 
             broadway, andrew, JFK];
@@ -78,7 +75,6 @@ function makeMapLocations() {
     line2 = [JFK, savinHill, fieldsCorner, shawmut, ashmont];
 
     line3 = [JFK, northQuincy, wollaston, quincyCenter, quincyAdams, braintree,];
-
 
 
     stationListNums = [southStation, andrew, porterSquare, harvardSquare, JFK, savinHill, 
@@ -91,7 +87,6 @@ function makeMapLocations() {
                             "Davis", "Alewife", "Kendall/MIT", "Charles/MGH", "Downtown Crossing", 
                             "Quincy Center", "Quincy Adams", "Ashmont", "Wollaston", "Fields Corner", 
                             "Central Square", "Braintree"];
-
 }
 
 function showMeMarker(position) {
@@ -133,7 +128,6 @@ function closestStation()
     }
 
     var popupText = marker.title + "<br/>" +"Closest Redline Station: " + stationListStrings[stationIndex];
-    // markerInfowindow.open(map, marker);
 
     var closestStationPath = [
         myLoc,
@@ -170,8 +164,6 @@ function getSchedule(name) {
 
 
 function renderMap() {
-
-
 
     markerSouthStation = new google.maps.Marker({
         position: southStation,
