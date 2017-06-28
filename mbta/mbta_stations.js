@@ -37,7 +37,7 @@ function popup() {
         }
     }
     
-    request.open("GET", "https://sleepy-waters-78559.herokuapp.com/redline.json", true);
+    request.open("GET", "https://fast-fjord-77709.herokuapp.com/redline.json", true);
     request.send();
 }
 
