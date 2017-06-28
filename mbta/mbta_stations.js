@@ -127,7 +127,7 @@ function closestStation()
         }
     }
 
-    var popupText = marker.title + "<br/>" +"Closest Redline Station: " + stationListStrings[stationIndex];
+    var popupText = marker.title + "<br/>" +"Closest Redline Station: " + stationListStrings[stationIndex] + "<br/>Distance: " + (closestStationDistance * 0.000621371192).toFixed(2) + " mi";
 
     var closestStationPath = [
         myLoc,
