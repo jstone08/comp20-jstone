@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lab13</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+
+	<body>
+		<h1> Security Assessment of Not Foursquare</h1>
+		<p> <h2>Written by  Jordan Stone Secuirty Services</h2> </p>
+
+		<h3>Introduction</h3>
+		<p> This webpage contains a security report that exposes vulnerabilities of the supplied webserver. This assignment was contracted to Jordan Stone Security Services by the Tufts CS Department. I have demonstrated my understanding of web based programming in this security profile. This web application logs “check-in” data from users. However, due to three security problems, it is not safe for the public. </p>
+
+		<h3>Methodology</h3>
+		<p> Testing of this application was split into two categories. Initially, black-box testing was conducted for finding vulnerabilities via <xmp>curl</xmp>. Then, after looking at the source code, curl was used again to perform injections and investigate more vulnerabilities within the source. </p>
+
+
+		<h3>Abstract of Findings</h3>
+		<p> Not Foursquare has web programming vulnerabilities that include placing too much trust into user input. This security problem can be simplified to saying that the web application does not properly scan the external input for malicious content. An attacker can submit malicious software that is masquerading as a normal input string, change the look and feel of the website or inundate the server with requests and overload the page. The security of the application can be bolstered with simple changes to the source. </p>
+
+		<h3>Issues Found</h3>
+		<ol>
+			<li>
+				<p><h4>XSS Vulnerabilities in login</h4></p>
+				<ul>
+					<li> Location: /sendLocation </li>
+
+					<li> Severity: High, Cross-Site Scripting (XSS) vulnerability is a major security risk and puts Not Foursquare's user information at a level of vulnerability that is unsafe for a web application.  </li>
+
+					<li> Description: Not Foursquare currently trusts that the users will not put malware in their login data. The basic skeleton of the source will simple take the user input and place it into an html body. If the user inters a string with java script tags, the code inside these tags will be executed.</li>
+
+					<li> Proof of Vulnerability: An initial issue with Not Foursquare, as mentioned above, is that, as a web application, NF places too much trust in its users input. For example, when a user creates a basic data entry, it might look something like this, <xmp> curl --data "login=Jordan&lat=72&lng=75" http://localhost:3000/sendLocation</xmp>. The problem comes from the fact that Not Foursquare does not screen their user external input for malicious content. Therefore, in the section of the above text where the string <xmp> “Jordan”, “72”, or “75” </xmp> was placed, a devious user could insert input containing JavaScript that would allow the attacker access user information. For example, an attacker could write something like: <xmp> curl --data"login=<script>alert(‘this is a XSS vulnerability’)</script>&lat=72&lng=75"http://localhost:3000/sendLocation </xmp>. Not Forsquare would then contain a popup with the text “this is a XSS vulnerability”. XSS vulnerabilities are very dangerous because they leave open doors to the JavaScript source of the page and user information and data such ass IP’s and cookies.</li>
+
+					<li>Resolution: Not Foursquare would have to implement a external user input filter on data that is being inputted into the source files. Such a filter would remove any characters that are key characters to malicious content such ass tag characters and slashes. Removing these characters will ensure that the input does not allow users to alter with the JavaScript of the web app. This will allow the server to seep out malicious characters from entering the database and causing any harm. The following code was extracted from a simple XSS prevention website, and is one, of many, ways to filter out possibly malicious characters. <xmp> login = login.replace(/</g, "&lt;").replace(/>/g, "&gt;"); </xmp></li>
+				</ul>
+			</li>
+			<li>
+				<p><h4>HTML Injection Vulnerabilities</h4></p>
+				<ul>
+					<li> Location: /sendLocation </li>
+
+					<li> Severity: High, HTML Injection Vulnerability is a major security risk and puts Not Foursquare's pages, layout, and look and feel at a level of vulnerability that is unsafe for a public web application.  </li>
+
+					<li> Description: Not Foursquare currently trusts that the users will not put malware in their login data. The basic skeleton of the source will simple take the user input and place it into an html body. If the user inters a string with html5 tags, the code inside these tags will be executed.</li>
+				</ul>	
+			</li>
+		</ol>
+
+		<h3>Conclusion</h3>
+		<p> As shown above the significance of these security vulnerabilities are rather easily fixable and can prevent major security breaches to NF's database. These solutions mostly tailor to more careful and sanitized external inputs from clients and making sure that no malicious code is introduced to your database but searching for specific characters and inputs. 
+	</body>
+</hmtl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
